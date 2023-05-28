@@ -1,11 +1,11 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../index.css";
-import { logout } from "../redux/actions/auth";
+import { getProfile, logout } from "../redux/actions/auth";
 function Nav() {
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, token, user } = useSelector((state) => state.auth);
   const [searchKey, setSearchKey] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -14,6 +14,12 @@ function Nav() {
     e.preventDefault();
     navigate(`/search/${searchKey}`);
   };
+
+  useEffect(() => {
+    if (isLoggedIn && token) {
+      dispatch(getProfile());
+    }
+  }, [dispatch, token, isLoggedIn]);
 
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -83,10 +89,10 @@ function Nav() {
       {isLoggedIn ? (
         <>
           <button
-            className="text-black bg-white font-bold py-2 px-4 rounded ml-5 hover:bg-slate-300"
-            onClick={() => navigate("/dashboard")}
+            className="text-white bg-black font-bold py-2 px-4 rounded ml-5 hover:bg-slate-300"
+            onClick={() => navigate("/profile")}
           >
-            Dashboard
+            Welcome, ({user?.name})
           </button>
           <button
             className="text-white border-transparent bg-transparent"

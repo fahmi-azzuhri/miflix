@@ -7,7 +7,8 @@ import Searched from "../pages/Searched";
 import TopRated from "../pages/TopRated";
 import LoginPage from "../components/LoginPage";
 import RegisterPage from "../components/RegisterPage";
-import Dashboard from "../pages/Dashboard";
+import Profile from "../pages/Profile";
+import Protected from "../components/Protected";
 
 function Main() {
   const location = useLocation();
@@ -29,7 +30,14 @@ function Main() {
             <Route element={<Searched />} path="/search/:title" />
             <Route element={<LoginPage />} path="/login" />
             <Route element={<RegisterPage />} path="/register" />
-            <Route element={<Dashboard />} path="/dashboard" />
+            <Route
+              element={
+                <Protected>
+                  <Profile />
+                </Protected>
+              }
+              path="/profile"
+            />
           </Routes>
           )
         </div>

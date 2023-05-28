@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { setIsLoggedIn, setToken } from "../reducers/auth";
+import { setIsLoggedIn, setToken, setUser } from "../reducers/auth";
 
 export const login = (data, navigate) => async (dispatch) => {
   try {
@@ -54,6 +54,35 @@ export const register = (data, navigate) => async (dispatch) => {
 export const logout = (navigate) => async (dispatch) => {
   dispatch(setToken(null));
   dispatch(setIsLoggedIn(false));
+  dispatch(setUser(null));
 
   navigate("/");
+};
+
+export const getProfile = (navigate) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().auth;
+
+    const response = await axios.get(
+      `${process.env.REACT_APP_AUTH_API}/api/v1/auth/me`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const { data } = response?.data;
+    dispatch(setUser(data));
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      toast.error(error?.response?.data?.message);
+      if (error.response.status === 401) {
+        dispatch(logout(navigate));
+      }
+      return;
+    }
+
+    toast.error(error.message);
+  }
 };
