@@ -1,13 +1,14 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../index.css";
-
+import { logout } from "../redux/actions/auth";
 function Nav() {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const [searchKey, setSearchKey] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const search = (e) => {
     e.preventDefault();
@@ -80,12 +81,20 @@ function Nav() {
       </form>
 
       {isLoggedIn ? (
-        <button
-          className="text-black bg-white font-bold py-2 px-4 rounded hover:bg-slate-300"
-          onClick={() => navigate("/dashboard")}
-        >
-          Dashboard
-        </button>
+        <>
+          <button
+            className="text-black bg-white font-bold py-2 px-4 rounded ml-5 hover:bg-slate-300"
+            onClick={() => navigate("/dashboard")}
+          >
+            Dashboard
+          </button>
+          <button
+            className="text-white border-transparent bg-transparent"
+            onClick={() => dispatch(logout(navigate))}
+          >
+            Logout
+          </button>
+        </>
       ) : (
         <>
           <button

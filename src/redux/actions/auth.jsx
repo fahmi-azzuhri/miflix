@@ -50,3 +50,10 @@ export const register = (data, navigate) => async (dispatch) => {
     toast.error(error.message);
   }
 };
+
+export const logout = (navigate) => async (dispatch) => {
+  dispatch(setToken(null));
+  dispatch(setIsLoggedIn(false));
+
+  navigate("/");
+};
