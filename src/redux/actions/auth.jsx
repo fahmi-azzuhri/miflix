@@ -15,7 +15,7 @@ export const login = (data, navigate) => async (dispatch) => {
     dispatch(setToken(token));
     dispatch(setIsLoggedIn(true));
 
-    // redirect to home, don't forget to useNavigate in the component
+    // redirect to dashboard
     navigate("/dashboard");
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -40,12 +40,11 @@ export const register = (data, navigate) => async (dispatch) => {
     dispatch(setToken(token));
     dispatch(setIsLoggedIn(true));
 
-    // redirect to home, don't forget to useNavigate in the component
-    navigate("/");
+    // redirect to login page
+    navigate("/login");
   } catch (error) {
     if (axios.isAxiosError(error)) {
       toast.error(error?.response?.data?.message);
-      return;
     }
 
     toast.error(error.message);

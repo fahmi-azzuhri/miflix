@@ -7,7 +7,7 @@ import Searched from "../pages/Searched";
 import TopRated from "../pages/TopRated";
 import LoginPage from "../components/LoginPage";
 import Dashboard from "../pages/Dashboard";
-import { Register } from "../pages/Register";
+import RegisterPage from "../components/RegisterPage";
 
 // import { AuthContextProvider } from "../context/AuthContext";
 
@@ -22,7 +22,7 @@ function Main() {
         <Route element={<Details />} path="/details/:id" />
         <Route element={<Searched />} path="/search/:title" />
         <Route element={<LoginPage />} path="/login" />
-        <Route element={<Register />} path="/register" />
+        <Route element={<RegisterPage />} path="/register" />
         <Route element={<Dashboard />} path="/dashboard" />
       </Routes>
     </>

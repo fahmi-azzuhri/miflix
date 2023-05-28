@@ -11,6 +11,9 @@ export const Register = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
+  const handleLogin = () => {
+    navigate("/login");
+  };
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -66,7 +69,7 @@ export const Register = (props) => {
         />
         <button type="submit">Register Now</button>
       </form>
-      <button className="link-btn" onClick={() => props.onFormSwitch("login")}>
+      <button className="link-btn" onClick={handleLogin}>
         Already have an account? Login here.
       </button>
     </div>

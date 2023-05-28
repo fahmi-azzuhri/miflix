@@ -87,12 +87,20 @@ function Nav() {
           Dashboard
         </button>
       ) : (
-        <button
-          className="text-black bg-white font-bold py-2 px-4 rounded hover:bg-slate-300"
-          onClick={() => navigate("/login")}
-        >
-          Login/Register
-        </button>
+        <>
+          <button
+            className="text-black bg-white font-bold py-2 px-4 rounded hover:bg-slate-300"
+            onClick={() => navigate("/register")}
+          >
+            Register
+          </button>
+          <button
+            className="text-white bg-red-600 font-bold py-2 px-4 rounded hover:bg-red-400"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </button>
+        </>
       )}
     </nav>
   );

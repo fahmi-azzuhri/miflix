@@ -3,11 +3,15 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../redux/actions/auth";
 
-export const Login = (props) => {
+export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleRegister = () => {
+    navigate("/register");
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -39,10 +43,7 @@ export const Login = (props) => {
         />
         <button type="submit">Login Now</button>
       </form>
-      <button
-        className="link-btn"
-        onClick={() => props.onFormSwitch("register")}
-      >
+      <button className="link-btn" onClick={handleRegister}>
         Don't have an account? Register here.
       </button>
       <div className="items-center flex flex-col">

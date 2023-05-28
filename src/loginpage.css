@@ -5,7 +5,8 @@
   flex-direction: column;
 }
 
-.LoginPage {
+.LoginPage,
+.RegisterPage {
   text-align: center;
   display: flex;
   min-height: 100vh;
@@ -14,6 +15,7 @@
   color: white;
   background: url(https://assets.nflxext.com/ffe/siteui/vlv3/efb4855d-e702-43e5-9997-bba0154152e0/f4c2880f-1f84-4b99-8a58-1854ab045684/ID-en-20230417-popsignuptwoweeks-perspective_alpha_website_large.jpg);
 }
+
 .main {
   background: rgb(10, 6, 6);
   opacity: 0.8;
