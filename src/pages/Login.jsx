@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import GoogleLogin from "../components/GoogleLogin";
 import { login } from "../redux/actions/auth";
 
 export const Login = () => {
@@ -55,6 +56,7 @@ export const Login = () => {
       </button>
       <div className="items-center flex flex-col">
         <h1>OR</h1>
+        <GoogleLogin buttonText={"Login with Google"} />
       </div>
     </div>
   );
