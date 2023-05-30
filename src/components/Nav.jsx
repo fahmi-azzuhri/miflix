@@ -92,7 +92,7 @@ function Nav() {
             className="text-white bg-black font-bold py-2 px-4 rounded ml-5 hover:bg-slate-300"
             onClick={() => navigate("/profile")}
           >
-            Welcome, ({user?.name})
+            {user?.name}
           </button>
           <button
             className="text-white border-transparent bg-transparent"
