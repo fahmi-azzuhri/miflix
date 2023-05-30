@@ -9,6 +9,7 @@ import LoginPage from "../components/LoginPage";
 import RegisterPage from "../components/RegisterPage";
 import Profile from "../pages/Profile";
 import Protected from "../components/Protected";
+import RedirectIfProtected from "../components/RedirectIfProtected";
 
 function Main() {
   const location = useLocation();
@@ -29,7 +30,14 @@ function Main() {
             <Route element={<Details />} path="/details/:id" />
             <Route element={<Searched />} path="/search/:title" />
             <Route element={<LoginPage />} path="/login" />
-            <Route element={<RegisterPage />} path="/register" />
+            <Route
+              element={
+                <RedirectIfProtected>
+                  <RegisterPage />
+                </RedirectIfProtected>
+              }
+              path="/register"
+            />
             <Route
               element={
                 <Protected>

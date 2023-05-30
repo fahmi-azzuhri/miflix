@@ -17,9 +17,9 @@ function Nav() {
 
   useEffect(() => {
     if (isLoggedIn && token) {
-      dispatch(getProfile());
+      dispatch(getProfile(navigate));
     }
-  }, [dispatch, token, isLoggedIn]);
+  }, [dispatch, token, isLoggedIn, navigate]);
 
   <svg
     xmlns="http://www.w3.org/2000/svg"
